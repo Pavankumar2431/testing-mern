@@ -21,7 +21,7 @@ const Dashboard = () => {
       }
 
       try {
-        const response = await axios.get('http://localhost:5000/api/todos', {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/todos`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTodos(response.data);
