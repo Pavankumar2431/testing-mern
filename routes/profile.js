@@ -7,13 +7,22 @@ const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET || 'your_default_jwt_secret';
 
 // Middleware to authenticate JWT
-const authenticateToken  = (req, res, next) => {
-  const token = req.headers['authorization'];
-  if (!token) return res.sendStatus(403);
+const authenticateToken = (req, res, next) => {
+  const token = req.headers['authorization']?.split(' ')[1]; // Extract token from Bearer token format
+  if (!token) {
+      console.log('No token provided');
+      return res.sendStatus(403); // Forbidden
+  }
+  
   jwt.verify(token, JWT_SECRET, (err, user) => {
-    if (err) return res.sendStatus(403);
-    req.user = user;
-    next();
+      if (err) {
+          console.log('Token verification failed:', err.message);
+          return res.sendStatus(403); // Forbidden
+      }
+      
+      console.log('User from token:', user); // Log user info from token
+      req.user = user; // Attach user info to the request object
+      next();
   });
 };
 

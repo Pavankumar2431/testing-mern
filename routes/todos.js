@@ -7,7 +7,6 @@ const router = express.Router();
 const JWT_SECRET =process.env.JWT_SECRET || 'your_default_jwt_secret';
 
 // Middleware to authenticate JWT
-// Middleware to authenticate JWT
 const authenticateToken = (req, res, next) => {
     const token = req.headers['authorization']?.split(' ')[1]; // Extract token from Bearer token format
     if (!token) {

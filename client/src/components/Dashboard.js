@@ -103,11 +103,16 @@ const Dashboard = () => {
     navigate('/login'); // Redirect to login
   };
 
+  const handleProfile = () => {
+    navigate('/profile');
+  }
+
   return (
     <div>
       <h2 className="text-center mt-4">Todo List</h2>
       <div className='d-flex justify-content-end'>
-        <button className="btn btn-danger mb-3" onClick={handleLogout}>Logout</button>
+        <button className="btn btn-danger m-3" onClick={handleLogout}>Logout</button>
+        <button className='btn btn-info m-3 text-white' onClick={handleProfile} >Profile</button>
       </div>
       
     

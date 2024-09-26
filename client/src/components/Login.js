@@ -31,6 +31,7 @@ const LoginForm = () => {
 
   return (
     <div className="container">
+      <h1 className="text-center m-3 mb-5 text-info">Simple Todos</h1>
       <h2 className="text-center">Login</h2>
       <form onSubmit={handleSubmit} className="mx-auto" style={{ maxWidth: '400px' }}>
         <div className="form-group">

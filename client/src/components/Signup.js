@@ -21,6 +21,7 @@ const Signup = () => {
 
   return (
     <div className="row justify-content-center mt-5">
+      <h1 className="text-center m-3 mb-5 text-info">Simple Todos</h1>
       <div className="col-md-4">
         <h2 className="text-center">Signup</h2>
         <form onSubmit={handleSignup}>

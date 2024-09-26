@@ -11,7 +11,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your_default_jwt_secret';
 // Middleware to protect routes
 const authenticateToken = (req, res, next) => {
     const token = req.headers['authorization'] && req.headers['authorization'].split(' ')[1];
-    console.log(token)
+    
     if (!token) return res.sendStatus(401); // Unauthorized
 
     jwt.verify(token, JWT_SECRET, (err, user) => {
