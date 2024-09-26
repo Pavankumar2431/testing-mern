@@ -42,7 +42,7 @@ const Dashboard = () => {
     }
 
     try {
-        const response = await axios.post('http://localhost:5000/api/todos', { title, status }, {
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/todos`, { title, status }, {
             headers: { Authorization: `Bearer ${token}` }
         });
       setTodos([...todos, response.data]);
@@ -68,7 +68,7 @@ const Dashboard = () => {
     }
 
     try {
-      const response = await axios.put(`http://localhost:5000/api/todos/${editId}`, { title: editTitle, status: editStatus }, {
+      const response = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/todos/${editId}`, { title: editTitle, status: editStatus }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const updatedTodos = todos.map(todo => (todo.id === editId ? response.data : todo));
@@ -89,7 +89,7 @@ const Dashboard = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:5000/api/todos/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/todos/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTodos(todos.filter(todo => todo.id !== id));
